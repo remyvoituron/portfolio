@@ -34,11 +34,19 @@
          aria-current="location">Work</a>
       <a href="#about">About me</a>
     </nav>
-    <a class="header-social"
-       href="https://www.artstation.com/lebladzze5"
-       target="_blank"
-       rel="noopener noreferrer">ArtStation <span class="icon icon-arrow-up-right"
-            aria-hidden="true"></span></a>
+    <div class="header-actions">
+      <a class="header-social"
+         href="https://www.artstation.com/lebladzze5"
+         target="_blank"
+         rel="noopener noreferrer">ArtStation <span class="icon icon-arrow-up-right"
+              aria-hidden="true"></span></a>
+      <a class="resume-button"
+         href="assets/Remy-Voituron.pdf"
+         data-pdf
+         aria-label="Open my resume">
+        My resume <span class="icon icon-arrow-up-right" aria-hidden="true"></span>
+      </a>
+    </div>
   </header>
 
   <main id="main">
@@ -172,20 +180,20 @@
        class="footer-name">RÉMY VOITURON<span>.</span></a><span>© <span id="year">2026</span> Rémy Voituron</span>
   </footer>
 
-  <!-- Video player modal shared by all project links -->
+  <!-- Media preview modal shared by video and resume links -->
   <dialog class="video-dialog"
           aria-labelledby="video-title">
     <div class="dialog-header">
       <h2 id="video-title">Watch video</h2><button class="close-dialog"
               type="button"
-              aria-label="Close video">Close <span class="icon icon-close"
+              aria-label="Close preview">Close <span class="icon icon-close"
               aria-hidden="true"></span></button>
     </div>
     <div class="video-mount"></div>
-    <p class="video-help">Playback unavailable? <a id="youtube-fallback"
+    <p class="video-help"><span id="preview-message">Playback unavailable?</span> <a id="youtube-fallback"
          href="https://www.youtube.com/"
          target="_blank"
-         rel="noopener noreferrer">Watch directly on YouTube <span class="icon icon-arrow-up-right"
+         rel="noopener noreferrer"><span id="preview-link-label">Watch directly on YouTube</span> <span class="icon icon-arrow-up-right"
               aria-hidden="true"></span></a></p>
   </dialog>
 </body>

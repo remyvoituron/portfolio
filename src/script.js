@@ -2,25 +2,37 @@ const dialog = document.querySelector(".video-dialog");
 const mount = document.querySelector(".video-mount");
 const videoTitle = document.querySelector("#video-title");
 const fallback = document.querySelector("#youtube-fallback");
+const previewMessage = document.querySelector("#preview-message");
+const previewLinkLabel = document.querySelector("#preview-link-label");
 const closeButton = document.querySelector(".close-dialog");
 let videoTrigger;
 
-document.querySelectorAll("[data-video]").forEach((link) => {
+document.querySelectorAll("[data-video], [data-pdf]").forEach((link) => {
   link.addEventListener("click", (event) => {
     // Keep native links for modified clicks, file previews, and older browsers.
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
         location.protocol === "file:" || typeof dialog.showModal !== "function") return;
     event.preventDefault();
     videoTrigger = link;
-    videoTitle.textContent = link.dataset.title;
+    const isPdf = link.hasAttribute("data-pdf");
+    const title = isPdf ? "My resume" : link.dataset.title;
+    videoTitle.textContent = title;
+    dialog.dataset.content = isPdf ? "pdf" : "video";
+    mount.classList.toggle("pdf-mount", isPdf);
     fallback.href = link.href;
+    previewMessage.textContent = isPdf ? "Prefer to open it normally?" : "Playback unavailable?";
+    previewLinkLabel.textContent = isPdf ? "Open the PDF in a new tab" : "Watch directly on YouTube";
 
     const player = document.createElement("iframe");
-    player.title = link.dataset.title;
-    player.src = `https://www.youtube-nocookie.com/embed/${link.dataset.video}?autoplay=1&rel=0`;
-    player.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-    player.allowFullscreen = true;
-    player.referrerPolicy = "strict-origin-when-cross-origin";
+    player.title = title;
+    player.src = isPdf
+      ? `${link.href}#toolbar=0&navpanes=0`
+      : `https://www.youtube-nocookie.com/embed/${link.dataset.video}?autoplay=1&rel=0`;
+    if (!isPdf) {
+      player.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      player.allowFullscreen = true;
+      player.referrerPolicy = "strict-origin-when-cross-origin";
+    }
     mount.replaceChildren(player);
     dialog.showModal();
     document.body.classList.add("modal-open");
@@ -42,6 +54,8 @@ dialog.addEventListener("click", (event) => {
 });
 dialog.addEventListener("close", () => {
   mount.replaceChildren();
+  mount.classList.remove("pdf-mount");
+  delete dialog.dataset.content;
   document.body.classList.remove("modal-open");
   videoTrigger?.focus({ preventScroll: true });
 });
