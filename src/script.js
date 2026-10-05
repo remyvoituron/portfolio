@@ -13,9 +13,9 @@ document.querySelectorAll("[data-video], [data-pdf]").forEach((link) => {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
             location.protocol === "file:" || typeof dialog.showModal !== "function") return;
         event.preventDefault();
-        videoTrigger = link;
+        videoTrigger = link.closest(".resume-dropdown")?.querySelector("summary") || link;
         const isPdf = link.hasAttribute("data-pdf");
-        const title = isPdf ? "My resume" : link.dataset.title;
+        const title = isPdf ? (link.dataset.resumeTitle || "My resume") : link.dataset.title;
         videoTitle.textContent = title;
         dialog.dataset.content = isPdf ? "pdf" : "video";
         mount.classList.toggle("pdf-mount", isPdf);
@@ -34,6 +34,7 @@ document.querySelectorAll("[data-video], [data-pdf]").forEach((link) => {
             player.referrerPolicy = "strict-origin-when-cross-origin";
         }
         mount.replaceChildren(player);
+        link.closest(".resume-dropdown")?.removeAttribute("open");
         dialog.showModal();
         document.body.classList.add("modal-open");
         closeButton.focus();

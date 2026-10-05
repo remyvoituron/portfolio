@@ -229,6 +229,42 @@ nav a[aria-current]::after {
   font-size: 12px;
   font-weight: 700;
   transition: background .2s, color .2s;
+  cursor: pointer;
+  list-style: none;
+}
+
+.resume-button::-webkit-details-marker {
+  display: none;
+}
+
+.resume-dropdown {
+  position: relative;
+}
+
+.resume-dropdown-menu {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 150px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  box-shadow: 0 8px 24px rgb(24 46 38 / 14%);
+}
+
+.resume-dropdown-menu a {
+  display: block;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background .2s, color .2s;
+}
+
+.resume-dropdown-menu a:hover,
+.resume-dropdown-menu a:focus-visible {
+  background: var(--forest);
+  color: var(--cream);
 }
 
 .resume-button:hover {
@@ -776,6 +812,40 @@ em {
   gap: 5px;
 }
 
+.resume-language-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.resume-language-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--forest);
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background .2s, color .2s;
+}
+
+.resume-language-links a:hover {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.resume-language-links a span {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .8px;
+}
+
+.resume-language-links a:hover span {
+  color: var(--cream);
+}
+
 .resume-banner strong {
   display: block;
   font-size: 32px;
@@ -1164,6 +1234,10 @@ em {
     white-space: nowrap;
   }
 
+  .resume-dropdown {
+    flex-shrink: 0;
+  }
+
   .hero-eyebrow {
     margin-top: 28px;
     font-size: 8px;
@@ -1344,6 +1418,17 @@ em {
   }
 
   .resume-banner-note {
+    font-size: 10px;
+  }
+
+  .resume-language-links {
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .resume-language-links a {
+    gap: 6px;
+    padding: 7px 10px;
     font-size: 10px;
   }
 

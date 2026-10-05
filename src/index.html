@@ -40,13 +40,21 @@
          target="_blank"
          rel="noopener noreferrer">ArtStation <span class="icon icon-arrow-up-right"
               aria-hidden="true"></span></a>
-      <a class="resume-button"
-         href="assets/Remy-Voituron.pdf"
-         data-pdf
-         aria-label="Open my resume">
-        My resume <span class="icon icon-arrow-up-right"
-              aria-hidden="true"></span>
-      </a>
+      <details class="resume-dropdown">
+        <summary class="resume-button">
+          My resume <span class="icon icon-arrow-up-right"
+                aria-hidden="true"></span>
+        </summary>
+        <div class="resume-dropdown-menu"
+             aria-label="Choose resume language">
+          <a href="assets/Remy-Voituron.pdf"
+             data-pdf
+             data-resume-title="English resume">English</a>
+          <a href="assets/CV_RemyVoituron.pdf"
+             data-pdf
+             data-resume-title="CV français">French</a>
+        </div>
+      </details>
     </div>
   </header>
 
@@ -134,21 +142,28 @@
             EXPLORE</span><strong>See more on ArtStation.</strong></span><span class="banner-arrow"
               aria-hidden="true"><span class="icon icon-arrow-up-right"></span></span>
       </a>
-      <a class="resume-banner"
-         href="assets/Remy-Voituron.pdf"
-         data-pdf
-         aria-label="Open my resume PDF">
+      <div class="resume-banner">
         <span class="resume-preview"
               aria-hidden="true"><span class="resume-preview-name">RÉMY<br>VOITURON</span><span
                 class="resume-preview-role">3D ANIMATOR</span><span class="resume-preview-divider"></span><span
                 class="resume-preview-heading">PROFILE</span><span class="resume-preview-lines"></span><span
                 class="resume-preview-heading">EXPERIENCE</span><span
                 class="resume-preview-lines resume-preview-lines-short"></span><span
-                class="resume-preview-accent"></span></span><span class="resume-banner-copy"><span class="eyebrow">MY
-            RESUME / PDF</span><strong>View my resume.</strong><span class="resume-banner-note">Experience, skills and
-            selected work</span></span><span class="banner-arrow"
-              aria-hidden="true"><span class="icon icon-arrow-up-right"></span></span>
-      </a>
+                class="resume-preview-accent"></span></span>
+        <span class="resume-banner-copy">
+          <span class="eyebrow">MY RESUME / PDF</span>
+          <strong>View my resume.</strong>
+          <span class="resume-banner-note">Choose a language to explore my experience, skills and selected work.</span>
+          <span class="resume-language-links">
+            <a href="assets/Remy-Voituron.pdf"
+               data-pdf
+               data-resume-title="English resume">English <span aria-hidden="true">EN</span></a>
+            <a href="assets/CV_RemyVoituron.pdf"
+               data-pdf
+               data-resume-title="CV français">Français <span aria-hidden="true">FR</span></a>
+          </span>
+        </span>
+      </div>
     </section>
 
     <!-- Artist profile and contact information -->
